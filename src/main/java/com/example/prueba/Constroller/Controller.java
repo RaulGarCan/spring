@@ -47,6 +47,7 @@ public class Controller {
     @PostMapping("/yamlToXml")
     public String yamlToXml(@RequestBody String libros) {
         Libro[] yaml = Manejador.importarYAML(libros);
+        System.out.println(Arrays.toString(yaml));
         String xml = Manejador.exportarAXML(yaml);
         return xml;
     }

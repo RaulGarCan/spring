@@ -58,11 +58,14 @@ public class Manejador {
         contenido = contenido.replaceAll(":","");
         contenido = contenido.trim().replaceAll(" +"," ");
         String[] arrayContenido = contenido.split(" ");
-
-        System.out.println("\n\n\n"+contenido+"\n\n\n"+Arrays.toString(arrayContenido)+"\n\n\n");
-
+        System.out.println(contenido);
+        System.out.println(Arrays.toString(arrayContenido));
         ArrayList<Libro> libros = new ArrayList<>();
         ArrayList<Autor> autoresLibro;
+        for(int i = 0; i<arrayContenido.length; i++){
+            arrayContenido[i] = arrayContenido[i].replaceAll("\n","");
+            arrayContenido[i] = arrayContenido[i].replaceAll("\r","");
+        }
         int posicionLibro = -1;
         for(int i = 0; i<arrayContenido.length; i++){
             if(arrayContenido[i].equalsIgnoreCase("codLibro")) {
@@ -91,7 +94,7 @@ public class Manejador {
                 libros.get(posicionLibro).setLector(new Lector(arrayContenido[i+2],arrayContenido[i+4]));
             }
         }
-        System.out.println(Arrays.toString(arrayContenido));
+        System.out.println("Output: "+Arrays.toString(arrayContenido));
         return libros.toArray(Libro[]::new);
     }
 }
